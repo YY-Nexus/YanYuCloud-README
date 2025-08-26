@@ -7,52 +7,54 @@
 ### 主要错误类型
 
 1. **interface 声明错误**（代码 8006）
-   ```
+
    "interface" 声明只能在 TypeScript 文件中使用。
-   ```
+
    - 出现位置：第 6、20、34、44、56 行
    - 影响：JavaScript 不支持 `interface` 关键字，会导致运行时语法错误
 
 2. **类型注释错误**（代码 8010）
-   ```
+
    "类型注释只能在 TypeScript 文件中使用。"
-   ```
+
    - 出现位置：第 408、434、460、505、664、678、682、777 行
    - 影响：JavaScript 不支持类型注释（如 `: string`、`: number`）
 
 3. **类型断言错误**（代码 8016）
-   ```
+
    "类型断言表达式只能在 TypeScript 文件中使用。"
-   ```
    - 出现位置：第 437、440、443、685、1271 行
    - 影响：JavaScript 不支持类型断言（如 `as string`、`<string>`）
 
 4. **元素访问表达式错误**（代码 1011）
-   ```
+
    "元素访问表达式应采用参数。"
-   ```
+
    - 出现位置：第 75、78 行
    - 影响：可能是 TypeScript 特有的语法或类型检查问题
 
 5. **变量重复声明错误**（代码 2451）
-   ```
+
    "无法重新声明块范围变量"。
-   ```
+
    - 出现位置：第 729、775 行
    - 影响：变量作用域问题，可能导致运行时错误
 
 ## 影响评估
 
 ### 1. 运行时影响
+
 - **严重**：使用 `interface`、类型注释和类型断言会导致 JavaScript 运行时直接报错，代码无法执行
 - **中等**：变量重复声明可能导致意外的行为或错误
 
 ### 2. 开发体验影响
+
 - **IDE 错误提示**：编辑器会持续显示错误信息，影响开发体验
 - **代码提示缺失**：失去 TypeScript 提供的智能提示和类型检查
 - **构建问题**：如果项目配置了 TypeScript 检查，构建过程会失败
 
 ### 3. 维护影响
+
 - **代码可读性**：混合使用 TypeScript 和 JavaScript 语法会降低代码可读性
 - **团队协作**：团队其他成员可能对这种混合代码感到困惑
 
@@ -118,11 +120,13 @@ mv JVCPMJ.js JVCPMJ.ts
 然后确保项目已配置 TypeScript：
 
 1. 安装 TypeScript：
+
 ```bash
 npm install --save-dev typescript
 ```
 
-2. 创建 `tsconfig.json` 配置文件：
+1. 创建 `tsconfig.json` 配置文件：
+
 ```json
 {
   "compilerOptions": {
@@ -204,6 +208,7 @@ const testCase = {
 ### 如果选择方案二（转换为 TypeScript）
 
 1. **重命名文件**：
+
    ```bash
    mv JVCPMJ.js JVCPMJ.ts
    ```
@@ -213,6 +218,7 @@ const testCase = {
    - 如果不存在，运行 `npx tsc --init` 创建
 
 3. **安装依赖**：
+
    ```bash
    npm install --save-dev typescript @types/node
    ```
@@ -238,4 +244,4 @@ const testCase = {
 1. **转换为纯 JavaScript**：移除所有 TypeScript 特有语法
 2. **转换为 TypeScript 文件**：重命名文件并配置 TypeScript 环境
 
-根据您的项目需求和技术栈选择合适的方案。如果项目已经使用或计划使用 TypeScript，方案二是最佳选择。如果项目必须保持纯 JavaScript，则必须选择方案一。
+根据您的项目需求和技术栈选择合适的方案。如果项目已经使用或计划使用 TypeScript，方案二是最佳选择。如果项目必须保持纯 JavaScript，则必须选择方案一。  
