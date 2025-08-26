@@ -1,5 +1,0 @@
-mcp_servers:
-  - name: edu-ai-mcp
-    url: https://mcp.yourdomain.com
-    token: ${{ secrets.MCP_SERVER_TOKEN }}
-    context: [ "repo", "docs", "qa-bank" ]
